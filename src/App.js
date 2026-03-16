@@ -73,14 +73,36 @@ function App() {
         {/* if a spot is selected show the info else show placeholder */}
         {selectedSpot ? (
           <div>
-            <h2 className="text-xl font-medium text-slate-800">{selectedSpot.name}</h2>
-            <p className="text-sm text-slate-500 mt-1">{selectedSpot.location}</p>
-            {/* <p className="text-sm text-slate-600 mt-4">{selectedSpot.difficulty}</p> */}
-            <span className="bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full px-3 py-1 inline-block mt-3">
+            <div className="mb-4">
+              <p className="text-xs text-slate-400 uppercase tracking-widest mb-1">
+                Snorkel Spot
+              </p>
+              
+              <h2 className="text-xl font-medium text-slate-800">
+                {selectedSpot.name}
+              </h2>
+
+              <p className="text-sm text-slate-500 mt-1">
+                📍 {selectedSpot.location}
+              </p>
+            </div>
+
+            <span className="bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full px-3 py-1 inline-block mt-1 mb-4">
               {selectedSpot.difficulty}
             </span>
+
             {/* leading relaxed is for lineheight */}
-            <p className="text-sm text-slate-600 mt-3 leading-relaxed">{selectedSpot.description}</p>
+            {/* <p className="text-sm text-slate-600 mt-3 leading-relaxed">{selectedSpot.description}</p> */}
+            <div className="mt-4">
+              <p className="text-xs text-slate-400 uppercase tracking-widest mb-2">
+                About
+              </p>
+
+              <p className="text-sm text-slate-600 leading-relaxed"> 
+                {selectedSpot.description}
+              </p>
+            </div>
+
           </div>
         ) : (
           <p className="text-center text-slate-400 text-sm mt-10">Click a marker to see spot details</p>
