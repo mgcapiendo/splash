@@ -20,51 +20,51 @@ function App() {
   const [selectedSpot, setSelectedSpot] = useState(null)
 
   return (
-    <div style={{display: 'flex', height: '100vh' }}>
+    // flex is sidebyside, h-screen is full screen height
+    <div className="flex h-screen">
 
       {/* create map container, center on current snorkel spot */}
-      <MapContainer
-        center={[spots[0].lat, spots[0].lng]}
-        zoom={14}
-        style={{ height: '100%', width: '100%' }}
-      >
-        {/* get all map tiles */}
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="© OpenStreetMap contributors"
-        />
-        {/* create a snorkel spot map marker */}
-        <Marker 
-          position={[spots[0].lat, spots[0].lng]}
-          
-          // when clicked set it as selected spot in memory
-          eventHandlers={{
-            click: () => setSelectedSpot(spots[0])
-          }}
+      {/* flex-1 lets map take all remaining space after panel takes its space */}
+      <div className="flex-1">
+        <MapContainer
+          center={[spots[0].lat, spots[0].lng]}
+          zoom={14}
+          style={{ height: '100%', width: '100%' }}
         >
-          <Popup>Phil Foster Park</Popup>
-        </Marker>
+          {/* get all map tiles */}
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="© OpenStreetMap contributors"
+          />
+          {/* create a snorkel spot map marker */}
+          <Marker 
+            position={[spots[0].lat, spots[0].lng]}
+            
+            // when clicked set it as selected spot in memory
+            eventHandlers={{
+              click: () => setSelectedSpot(spots[0])
+            }}
+          >
+            <Popup>Phil Foster Park</Popup>
+          </Marker>
 
-      </MapContainer>
+        </MapContainer>
+      </div>
 
       {/* create side panel */}
-      <div style={{
-        width: '360px',
-        background: 'white',
-        borderLeft: '1px solid #e2e8f0',
-        padding: '24px'
-      }}>
-
+      {/* overflow y auto lets scroll happen */}
+      <div className="w-80 bg-white border-1 border-slate-200 p-6 overflow-y-auto">
         {/* if a spot is selected show the info else show placeholder */}
         {selectedSpot ? (
           <div>
-            <h2>{selectedSpot.name}</h2>
-            <p>{selectedSpot.location}</p>
-            <p>{selectedSpot.difficulty}</p>
-            <p>{selectedSpot.description}</p>
+            <h2 className="text-xl font-medium text-slate-800">{selectedSpot.name}</h2>
+            <p className="text-sm text-slate-500 mt-1">{selectedSpot.location}</p>
+            <p className="text-sm text-slate-600 mt-4">{selectedSpot.difficulty}</p>
+            {/* leading relaxed is for lineheight */}
+            <p className="text-sm text-slate-600 mt-3 leading-relaxed">{selectedSpot.description}</p>
           </div>
         ) : (
-          <p>Click a marker to see spot details</p>
+          <p className="text-center text-slate-400 text-sm mt-10">Click a marker to see spot details</p>
         )}
       </div>
 
