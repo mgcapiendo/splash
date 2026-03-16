@@ -54,12 +54,31 @@ function App() {
       {/* create side panel */}
       {/* overflow y auto lets scroll happen */}
       <div className="w-80 bg-white border-1 border-slate-200 p-6 overflow-y-auto">
+        {/* header */}
+        <div className="mb-6 pb-6 border-b border-slate-200">
+          <div className="flex items-center gap-2">
+            {/* logo */}
+            <span className="text-2xl">🌊</span>
+            {/* tracking-tight puts letters slightly closer */}
+            <h1 className="text-2xl font-medium text-slate-800 tracking-tight">
+              Splash
+            </h1>
+          </div>
+          {/* tagline */}
+          <p className="text-xs text-slate-400 mt-1">
+            Florida Snorkel Explorer
+          </p>
+        </div>
+
         {/* if a spot is selected show the info else show placeholder */}
         {selectedSpot ? (
           <div>
             <h2 className="text-xl font-medium text-slate-800">{selectedSpot.name}</h2>
             <p className="text-sm text-slate-500 mt-1">{selectedSpot.location}</p>
-            <p className="text-sm text-slate-600 mt-4">{selectedSpot.difficulty}</p>
+            {/* <p className="text-sm text-slate-600 mt-4">{selectedSpot.difficulty}</p> */}
+            <span className="bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full px-3 py-1 inline-block mt-3">
+              {selectedSpot.difficulty}
+            </span>
             {/* leading relaxed is for lineheight */}
             <p className="text-sm text-slate-600 mt-3 leading-relaxed">{selectedSpot.description}</p>
           </div>
