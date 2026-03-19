@@ -10,7 +10,7 @@ const spots = [
     lat: 26.7845,
     lng: -80.0427,
     difficulty: 'Beginner',
-    description: 'Home to the famouse Blue Heron Bridge',
+    description: 'Home to the famous Blue Heron Bridge & Floridas own critter capital for marine life living throughout a trail of artifical reefs',
   }
 ]
 
@@ -53,7 +53,7 @@ function App() {
 
       {/* create side panel */}
       {/* overflow y auto lets scroll happen */}
-      <div className="w-80 bg-white border-1 border-slate-200 p-6 overflow-y-auto">
+      <div className="w-96 bg-white border-1 border-slate-200 p-6 overflow-y-auto">
         {/* header */}
         <div className="mb-6 pb-6 border-b border-slate-200">
           <div className="flex items-center gap-2">
@@ -102,6 +102,27 @@ function App() {
                 {selectedSpot.description}
               </p>
             </div>
+
+            <div className="mt-4">
+              <img src="https://static.wixstatic.com/media/93b048_d22e599dac9a40a28a6b4c14525d8737~mv2.jpg/v1/fill/w_640,h_356,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/93b048_d22e599dac9a40a28a6b4c14525d8737~mv2.jpg"></img>
+            </div>
+
+            <div className="mt-8">
+              <p className="text-xs text-slate-400 uppercase tracking-widest mb-2">
+                Top Sightings
+              </p>
+
+              <p className="text-sm text-slate-600 leading-relaxed">
+                ⭐ Spotted Eagle Ray <br />
+                ⭐ Atlantic Long Armed Octopus <br />
+                ⭐ Sea Turtle <br />
+              </p>
+
+              <p className="text-[0.7rem] tracking-widest text-slate-400 mt-1 text-center">
+                See All Sightings
+              </p>
+            </div>
+            
 
           </div>
         ) : (
